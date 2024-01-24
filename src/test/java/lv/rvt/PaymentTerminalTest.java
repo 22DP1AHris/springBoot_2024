@@ -43,4 +43,25 @@ public class PaymentTerminalTest {
         // assertEquals(expected, unicafeExactum);
 
     }
+
+    @Test
+    public void testAddMoneyToCard(){
+
+        PaymentTerminal unicafeExactum = new PaymentTerminal();
+        assertEquals("money: 1000.0, number of sold afforable meals: 0, number of sold hearty meals: 0", unicafeExactum);
+        
+        PaymentCard annesCard = new PaymentCard(2);
+        assertEquals(2.0, annesCard.balance());
+
+        assertEquals(false, unicafeExactum.eatHeartily(annesCard));
+        unicafeExactum.addMoneyToCard(annesCard, 100);
+
+
+        assertEquals(true, unicafeExactum.eatHeartily(annesCard));
+        assertEquals(97.7, annesCard.balance());
+
+        assertEquals("money: 1100.0, number of sold afforable meals: 0, number of sold hearty meals: 1", unicafeExactum);
+
+
+    }
 }
