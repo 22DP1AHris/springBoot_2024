@@ -4,6 +4,8 @@ public class PaymentTerminal {
     private double money;  // amount of cash
     private int affordableMeals; // number of sold affordable meals
     private int heartyMeals;  // number of sold hearty meals
+    private double affordableMealPrice = 2.5;
+    private double heartyMealPrice = 4.3;
 
     public PaymentTerminal() {
         // register initially has 1000 euros of money
@@ -15,7 +17,7 @@ public class PaymentTerminal {
         // increase the amount of cash by the price of an affordable meal and return the change
         // if the payment parameter is not large enough, no meal is sold and the method should return the whole payment
 
-        double affordableMealPrice = 2.5;
+        
         if (payment >= affordableMealPrice){
             money += affordableMealPrice;
             affordableMeals++;
@@ -31,7 +33,7 @@ public class PaymentTerminal {
         // increase the amount of cash by the price of a hearty meal and return the change
         // if the payment parameter is not large enough, no meal is sold and the method should return the whole payment
 
-        double heartyMealPrice = 4.3;
+        
         if (payment >= heartyMealPrice){
             money += heartyMealPrice;
             heartyMeals++;
@@ -39,6 +41,36 @@ public class PaymentTerminal {
             return payment - heartyMealPrice;
         } else {
             return payment;
+        }
+    }
+
+    public boolean eatAffordably(PaymentCard card) {
+        // an affordable meal costs 2.50 euros
+        // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
+        // otherwise false is returned
+
+        if (card.balance() >= affordableMealPrice){
+            card.takeMoney(affordableMealPrice);
+            affordableMeals++;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean eatHeartily(PaymentCard card) {
+        // a hearty meal costs 4.30 euros
+        // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
+        // otherwise false is returned
+
+        if (card.balance() >= heartyMealPrice){
+            card.takeMoney(heartyMealPrice);
+            heartyMeals++;
+
+            return true;
+        } else {
+            return false;
         }
     }
 

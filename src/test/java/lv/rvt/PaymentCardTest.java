@@ -8,7 +8,7 @@ import rvt.PaymentCard;
 
 public class PaymentCardTest {
     @Test
-    public void testPlusMethod(){
+    public void testTakeMoney(){
         PaymentCard petesCard = new PaymentCard(10);
         assertEquals(10.0, petesCard.balance());
         
