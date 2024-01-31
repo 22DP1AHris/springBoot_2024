@@ -1,8 +1,6 @@
 package rvt;
 import java.util.*;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 public class Sorter {
     
     public int smallest(int[] array){
@@ -21,7 +19,7 @@ public class Sorter {
 
         int element = smallest(array);
         int index = -1;
-        for (int i=0; i<array.length-1; i++){
+        for (int i=0; i<array.length; i++){
             if (array[i] == element){
                 index = i;
             }
@@ -33,6 +31,20 @@ public class Sorter {
     public int indexOfSmallestFrom(int[] array, int startIndex) {
         int[] newArray = Arrays.copyOfRange(array, startIndex, array.length);  
         return indexOfSmallest(newArray) + startIndex;
+    }
+
+    public void swap(int[] array, int index1, int index2) {
+        int value1 = array[index1];
+
+        array[index1] = array[index2];
+        array[index2] = value1;
+
+    }
+
+    public void sort(int[] array) {
+        for (int i=0; i<array.length; i++){
+            swap(array, i, indexOfSmallestFrom(array, i));
+        }
     }
 
 }
