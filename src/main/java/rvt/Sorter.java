@@ -18,19 +18,21 @@ public class Sorter {
     }
 
     public int indexOfSmallest(int[] array){
-        return ArrayUtils.indexOf(array, smallest(array));
+
+        int element = smallest(array);
+        int index = -1;
+        for (int i=0; i<array.length-1; i++){
+            if (array[i] == element){
+                index = i;
+            }
+        }
+        return index;
 
     }
 
     public int indexOfSmallestFrom(int[] array, int startIndex) {
-        int min = array[startIndex];
-        for(int i = startIndex; i< array.length; i++) { 
-
-            if(array[i] < min) {
-               min = array[i];
-            }
-        }
-
-        return ArrayUtils.indexOf(array, min);
+        int[] newArray = Arrays.copyOfRange(array, startIndex, array.length);  
+        return indexOfSmallest(newArray) + startIndex;
     }
+
 }

@@ -23,8 +23,9 @@ public class SorterTest {
 
         Sorter sortingThing = new Sorter();
         assertEquals(0, sortingThing.indexOfSmallestFrom(numbers, 0));
-
         assertEquals(1, sortingThing.indexOfSmallestFrom(numbers, 1));
         assertEquals(3, sortingThing.indexOfSmallestFrom(numbers, 2));
+
+        
     }
 }
