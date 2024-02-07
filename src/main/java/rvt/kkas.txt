@@ -1,0 +1,8 @@
+Person kika = new Person();
+
+kika.name = "kika";
+kika.surname = "liepa";
+
+print(kika) -> 4378AGjkd89
+
+print(kika) -> kika liepa
